@@ -1,5 +1,7 @@
 package com.example.activitytest;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,13 +39,35 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.first_layout);
         Button button1=(Button) findViewById(R.id.button_1);
+
         button1.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v){
 //                Toast.makeText(FirstActivity.this,"You clicked Button 1",
 //                        Toast.LENGTH_SHORT).show();
-                finish();//销毁活动
+
+//                finish();//销毁活动
+
+//                显式Intent
+//                Intent intent =new Intent(FirstActivity.this,SecondActivity.class);
+//                startActivity(intent);
+
+//                隐式Intent
+//                Intent intent =new Intent("com.example.activitytest.ACTION_START");
+//                intent.addCategory("com.example.activitytest.MY-CATEGORY");
+//                startActivity(intent);
+
+//                更多隐式Intent 打开网页
+                Intent intent=new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://x1aolata.github.io/"));
+                startActivity(intent);
+
+
+//                拨号 失败了
+//                Intent intent=new Intent(Intent.ACTION_DIAL);
+//                intent.setData(Uri.parse("tel：10086"));
+//                startActivity(intent);
             }
         });
     }
