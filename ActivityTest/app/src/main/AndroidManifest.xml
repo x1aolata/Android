@@ -10,8 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+
+
         <activity
             android:name=".FirstActivity"
+            android:launchMode="singleTask"
             android:label="This is FirstActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +24,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SecondActivity">
+
+
+
+
+
+        <activity android:name=".SecondActivity"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="com.example.activitytest.ACTION_START" />
 
@@ -28,6 +38,10 @@
                 <category android:name="com.example.activitytest.MY-CATEGORY" />
             </intent-filter>
         </activity>
+
+
+
+
 
         <activity android:name=".ThirdActivity">
             <intent-filter tools:ignore="AppLinkUrlError">
