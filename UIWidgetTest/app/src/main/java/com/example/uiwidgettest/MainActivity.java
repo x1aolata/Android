@@ -39,19 +39,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.button:
 
 
-                ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
-                progressDialog.setTitle("WARNING");
-                progressDialog.setMessage("你的手机即将爆炸，请稍后...");
-                progressDialog.setCancelable(true);
-                progressDialog.show();
+//                ProgressDialog progressDialog = new ProgressDialog(MainActivity.this);
+//                progressDialog.setTitle("WARNING");
+//                progressDialog.setMessage("你的手机即将爆炸，请稍后...");
+//                progressDialog.setCancelable(true);
+//                progressDialog.show();
 
 
 
 
 //                进度条逐渐增加
-//                int progress=progressBar.getProgress();
-//                progress=progress+10;
-//                progressBar.setProgress(progress);
+                int progress=progressBar.getProgress();
+                progress=progress+10;
+                progressBar.setProgress(progress);
 
 
 
@@ -77,4 +77,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
         }
     }
+
+
+
 }

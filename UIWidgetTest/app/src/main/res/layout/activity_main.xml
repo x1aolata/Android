@@ -16,7 +16,6 @@
         android:max="100"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:textColor="#8E8E38" />
 
     <TextView
@@ -34,6 +33,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button"
+      
         android:textAllCaps="false" />
 
     <EditText
