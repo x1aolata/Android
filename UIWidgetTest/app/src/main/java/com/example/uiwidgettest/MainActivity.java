@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class  MainActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText editText;
     private ImageView imageView;
     private ProgressBar progressBar;
@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 //                进度条逐渐增加
-                int progress=progressBar.getProgress();
-                progress=progress+10;
-                progressBar.setProgress(progress);
+//                int progress=progressBar.getProgress();
+//                progress=progress+10;
+//                progressBar.setProgress(progress);
 
 
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 
 //                切换图片
-//                imageView.setImageResource(R.drawable.img_1);
+                imageView.setImageResource(R.drawable.img_1);
 
 
 //                显示输入框的文字

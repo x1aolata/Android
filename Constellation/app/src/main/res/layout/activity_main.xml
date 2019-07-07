@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg1"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="250dp"
+        android:singleLine="false"
+        android:text="欢迎来到星座查看器"
+        android:textColor="#fafafa"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <!--<ImageButton-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@drawable/baiyang" />-->
+    <!--<ImageView-->
+        <!--android:id="@+id/image_bg"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:scaleType="matrix"-->
+        <!--android:src="@drawable/bg1" />-->
+
+</LinearLayout>

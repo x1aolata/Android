@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="24sp"
-        android:textColor="#DC143C"
+        android:textColor="#231b1d"
         android:text="This is a TextView" />
 
 

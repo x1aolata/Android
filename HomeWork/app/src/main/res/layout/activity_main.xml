@@ -2,8 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-  >
+    android:layout_height="match_parent">
 
     <EditText
         android:id="@+id/edit_1"
@@ -12,16 +11,20 @@
         android:layout_weight="1"
         android:hint="请输入两个数字（，隔开）"
 
-
         />
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
         android:layout_weight="0.618"
-        android:onClick="xingzuo"
-      />
-
+        android:onClick="gcd"
+        android:text="Button" />
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.618"
+        android:text="下一步" />
 
 </LinearLayout>

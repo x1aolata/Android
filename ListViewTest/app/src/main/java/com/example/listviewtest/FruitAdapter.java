@@ -1,7 +1,6 @@
 package com.example.listviewtest;
 
 
-
 import android.content.Context;
 
 import android.view.LayoutInflater;
@@ -17,17 +16,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-
 import java.util.List;
-
 
 
 public class FruitAdapter extends ArrayAdapter<Fruit> {
 
 
-
     private int resourceId;
-
 
 
     public FruitAdapter(Context context, int textViewResourceId,
@@ -39,7 +34,6 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
         resourceId = textViewResourceId;
 
     }
-
 
 
     @Override
@@ -58,9 +52,9 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
 
             viewHolder = new ViewHolder();
 
-            viewHolder.fruitImage = (ImageView) view.findViewById (R.id.fruit_image);
+            viewHolder.fruitImage = (ImageView) view.findViewById(R.id.fruit_image);
 
-            viewHolder.fruitName = (TextView) view.findViewById (R.id.fruit_name);
+            viewHolder.fruitName = (TextView) view.findViewById(R.id.fruit_name);
 
             view.setTag(viewHolder); // 将ViewHolder存储在View中
 
@@ -81,21 +75,16 @@ public class FruitAdapter extends ArrayAdapter<Fruit> {
     }
 
 
-
     class ViewHolder {
-
 
 
         ImageView fruitImage;
 
 
-
         TextView fruitName;
 
 
-
     }
-
 
 
 }
