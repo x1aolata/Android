@@ -3,6 +3,9 @@ package com.example.campusnavigation;
 
 import android.util.Log;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 public class Graph {
     // 最大支持节点数量
     public static final int MAX = 100;
@@ -12,6 +15,12 @@ public class Graph {
 
     public int[][] MAP = new int[MAX][MAX];
 
+    int[][] Distance;
+    int[][] P;
+
+    {
+        init();
+    }
 
     /**
      * 邻接矩阵的初始化
@@ -25,7 +34,7 @@ public class Graph {
             for (int j = 0; j < MAX; j++) {
                 if (i == j) MAP[i][j] = 0;
                 else
-                    MAP[i][j] = Integer.MAX_VALUE/3;
+                    MAP[i][j] = Integer.MAX_VALUE / 3;
             }
         }
         // 边赋值
@@ -84,19 +93,8 @@ public class Graph {
             MAP[11][9] = 600;
         }
 
-    }
-
-    /**
-     * Floyd算法求解最短路径
-     *
-     * @param startingPosition
-     * @param destination
-     * @return Minimum distance between startingPosition and destination
-     */
-    public int Floyd(int startingPosition, int destination) {
-        init();
-        int[][] Distance = MAP.clone();
-        int[][] P = new int[numberOfNodes][numberOfNodes];
+        Distance = MAP.clone();
+        P = new int[numberOfNodes][numberOfNodes];
         for (int i = 0; i < numberOfNodes; i++) {
             for (int j = 0; j < numberOfNodes; j++) {
                 P[i][j] = j;
@@ -113,6 +111,17 @@ public class Graph {
                 }
             }
         }
+
+    }
+
+    /**
+     * Floyd算法求解最短路径
+     *
+     * @param startingPosition
+     * @param destination
+     * @return Minimum distance between startingPosition and destination
+     */
+    public int Floyd(int startingPosition, int destination) {
         return Distance[startingPosition][destination];
     }
 
@@ -126,9 +135,44 @@ public class Graph {
             if (Place[i].equals(destination))
                 destinationIndex = i;
         }
-        Log.d("x1aolata", "Floyd: "+destinationIndex+" " +startingPositionIndex);
+        Log.d("x1aolata", "Floyd: " + destinationIndex + " " + startingPositionIndex);
         return Floyd(startingPositionIndex, destinationIndex);
     }
+
+    public int[] Route(int startingPosition, int destination) {
+        int[] route = new int[MAX];
+        Arrays.fill(route,-1);
+        int len = 0;
+        int k;
+        route[len++] = destination;
+        if (P[startingPosition][destination] == destination) {
+            route[len++] = startingPosition;
+        } else {
+            k = destination;
+            while (P[startingPosition][k] != k) {
+                k = P[startingPosition][k];
+                route[len++] = k;
+            }
+            route[len++] = startingPosition;
+        }
+
+        return route;
+    }
+
+    public int[] Route(String startingPosition, String destination) {
+
+        int startingPositionIndex = 0;
+        int destinationIndex = 0;
+
+        for (int i = 0; i < numberOfNodes; i++) {
+            if (Place[i].equals(startingPosition))
+                startingPositionIndex = i;
+            if (Place[i].equals(destination))
+                destinationIndex = i;
+        }
+        return Route(startingPositionIndex, destinationIndex);
+    }
+
 
     public String[] getPlace() {
         return Place;

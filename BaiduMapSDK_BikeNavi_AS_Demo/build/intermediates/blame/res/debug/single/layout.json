@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "E:\\Android\\BaiduMapSDK_BikeNavi_AS_Demo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_guide_main.xml",
+        "source": "E:\\Android\\BaiduMapSDK_BikeNavi_AS_Demo\\src\\main\\res\\layout\\activity_guide_main.xml"
+    },
+    {
+        "merged": "E:\\Android\\BaiduMapSDK_BikeNavi_AS_Demo\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "E:\\Android\\BaiduMapSDK_BikeNavi_AS_Demo\\src\\main\\res\\layout\\activity_main.xml"
+    }
+]

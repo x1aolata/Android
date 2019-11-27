@@ -49,7 +49,30 @@
         android:id="@+id/search_shortestPath"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:text="查询" />
+
+    <com.nightonke.boommenu.BoomMenuButton
+        android:id="@+id/bmb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bmb_buttonEnum="textInsideCircle"
+        app:bmb_piecePlaceEnum="piecePlace_dot_9_1"
+        app:bmb_buttonPlaceEnum="buttonPlace_sc_9_1"
+        app:bmb_normalColor="@color/colorPrimary"
+        />
+
+    <com.beardedhen.androidbootstrap.BootstrapButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="BootstrapButton"
+        app:bootstrapBrand="success"
+        app:bootstrapSize="lg"
+        app:buttonMode="regular"
+        android:background="@color/colorPrimary"
+        app:showOutline="false"
+        app:roundedCorners="true"
+        />
 
 
 </LinearLayout>

@@ -1,14 +1,22 @@
 package com.example.test9;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Toast;
+
+import com.nightonke.boommenu.BoomButtons.OnBMClickListener;
+import com.nightonke.boommenu.BoomButtons.SimpleCircleButton;
+import com.nightonke.boommenu.BoomButtons.TextInsideCircleButton;
+import com.nightonke.boommenu.BoomMenuButton;
 
 import org.angmarch.views.NiceSpinner;
 
@@ -48,6 +56,54 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        BoomMenuButton bmb = findViewById(R.id.bmb);
+
+        for (int i = 0; i < bmb.getPiecePlaceEnum().pieceNumber(); i++) {
+            TextInsideCircleButton.Builder builder = new TextInsideCircleButton.Builder()
+                    .normalImageRes(R.drawable.voice)
+                    .normalText("Butter") .shadowEffect(true)  .normalColor(Color.parseColor("#FF474E4A"))
+                    .listener(new OnBMClickListener() {
+                        @Override
+                        public void onBoomButtonClick(int index) {
+                            // When the boom-button corresponding this builder is clicked.
+                            Toast.makeText(MainActivity.this, "Clicked " + index, Toast.LENGTH_SHORT).show();
+                        }
+                    });
+            bmb.addBuilder(builder);
+        }
+
+    }
+
+
+
+
+
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.option_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_1:
+                Toast.makeText(MainActivity.this,"Option 1",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_2:
+                Toast.makeText(MainActivity.this,"Option 2",Toast.LENGTH_SHORT).show();
+                return true;
+            case R.id.action_3:
+                Toast.makeText(MainActivity.this,"Option 3",Toast.LENGTH_SHORT).show();
+                return true;
+            default:
+                //do nothing
+        }
+        return super.onOptionsItemSelected(item);
 
     }
 
