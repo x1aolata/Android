@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.campusnavigation">
-
-
     <!-- 获取访问手机振动器权限，用于导航过程中的震动提示 -->
-    <uses-permission android:name="android.permission.VIBRATE"/>
-    <!-- 获取摄像头权限，用于AR步行导航 -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 获取摄像头权限，用于AR步行导航 -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -24,10 +21,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AdministratorMode"></activity>
+        <activity android:name=".About" />
         <activity
             android:name=".DetailedInfo"
             android:label="@string/title_activity_detailed_info"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
             android:name="com.baidu.lbsapi.API_KEY"

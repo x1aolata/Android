@@ -4,4 +4,12 @@
     <color name="colorPrimary">#474E4A</color>
     <color name="colorPrimaryDark">#474E4A</color>
     <color name="colorAccent">#D81B60</color>
+
+    <color name="AddSpotFragment">#E0E0E0</color>
+    <color name="DeleteSpotFragment">#B3B3B3</color>
+    <color name="AlterSpotFragment">#B6B3B3</color>
+
+    <color name="Line">#4F0277</color>
+    <color name="RED">#FF0000</color>
+    <color name="Test">#3F51B5</color>
 </resources>

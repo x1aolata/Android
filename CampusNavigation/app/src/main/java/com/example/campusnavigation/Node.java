@@ -22,7 +22,7 @@ public class Node {
         this.latitude = latitude;
     }
 
-    public Node(String name, String number, String about, double longitude, double latitude) {
+    public Node(String name, String number, double longitude, double latitude, String about) {
         this.name = name;
         this.number = number;
         this.about = about;

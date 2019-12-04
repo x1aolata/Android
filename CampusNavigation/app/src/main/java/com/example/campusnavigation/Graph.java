@@ -4,37 +4,63 @@ package com.example.campusnavigation;
 import android.util.Log;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
+/**
+ * 单例类Graph
+ * 储存图的所有信息
+ */
 public class Graph {
-    // 最大支持节点数量
-    public static final int MAX = 100;
-    public String[] Place = {"体检中心", "操场", "校门北口", "银杏景观", "邯郸音乐厅", "图书馆", "餐厅", "信息学部", "花园景观", "校门东口", "网计学院", "校门南口"};
 
-    public int numberOfNodes;
+    // 单例类,以防出现二义性
+    private static Graph graph;
 
-    public int[][] MAP = new int[MAX][MAX];
-
-    int[][] Distance;
-    int[][] P;
-
-    {
-        init();
+    private Graph() {
     }
 
-    /**
-     * 邻接矩阵的初始化
-     */
-    public void init() {
+    public static Graph getInstance() {
+        if (graph == null) {
+            graph = new Graph();
+        }
+        return graph;
+    }
 
-        numberOfNodes = Place.length;
+    final private int MAX = 999;
+    public List<Node> Nodes = new ArrayList<Node>(); // 地点List
 
+    // 初始化地点数据
+    {
+        Nodes.add(new Node("体检中心", "0", 115.568463, 38.88999, "体检中心贼棒"));
+        Nodes.add(new Node("操场", "1", 115.572838, 38.891099, "操场"));
+        Nodes.add(new Node("校门北口", "2", 115.575169, 38.889526, "校门北口"));
+        Nodes.add(new Node("银杏景观", "3", 115.577738, 38.889031, "银杏景观"));
+        Nodes.add(new Node("邯郸音乐厅", "4", 115.56897, 38.889411, "邯郸音乐厅"));
+        Nodes.add(new Node("图书馆", "5", 115.572595, 38.887894, "图书馆"));
+        Nodes.add(new Node("餐厅", "6", 115.576009, 38.888122, "餐厅"));
+        Nodes.add(new Node("信息学部", "7", 115.571207, 38.887059, "信息学部"));
+        Nodes.add(new Node("花园景观", "8", 115.572303, 38.886111, "花园景观"));
+        Nodes.add(new Node("校门东口", "9", 115.574818, 38.886585, "校门东口"));
+        Nodes.add(new Node("网计学院", "10", 115.569518, 38.885668, "网计学院"));
+        Nodes.add(new Node("校门南口", "11", 115.571894, 38.883077, "校门南口"));
+        // Nodes.add(new Node("馨宁宿舍楼", "12", 115.580702, 38.889632, "馨宁宿舍楼"));
+    }
+
+
+    public double[][] MAP = new double[MAX][MAX];  // 邻接矩阵
+    public double[][] Distance = new double[MAX][MAX]; // 距离矩阵
+    public int[][] P;  // P矩阵
+
+
+    {
         // 初始化邻接矩阵
+
         for (int i = 0; i < MAX; i++) {
             for (int j = 0; j < MAX; j++) {
                 if (i == j) MAP[i][j] = 0;
                 else
-                    MAP[i][j] = Integer.MAX_VALUE / 3;
+                    MAP[i][j] = Double.POSITIVE_INFINITY;
             }
         }
         // 边赋值
@@ -93,26 +119,58 @@ public class Graph {
             MAP[11][9] = 600;
         }
 
-        Distance = MAP.clone();
-        P = new int[numberOfNodes][numberOfNodes];
-        for (int i = 0; i < numberOfNodes; i++) {
-            for (int j = 0; j < numberOfNodes; j++) {
+        init();
+    }
+
+
+    /**
+     * 邻接矩阵的初始化
+     */
+    public void init() {
+
+
+// 深拷贝
+        // 打印矩阵MAP
+        for (int i = 0; i < Nodes.size(); i++) {
+            Log.d("x1aolata", "MAP: " + Arrays.toString(MAP[i]));
+        }
+        for (int i = 0; i < MAX; i++) {
+            Distance[i] = MAP[i].clone();
+        }
+//        Distance = MAP;
+        P = new int[Nodes.size()][Nodes.size()];
+
+
+        // Floyd算法求解最短路径
+        for (int i = 0; i < Nodes.size(); i++) {
+            for (int j = 0; j < Nodes.size(); j++) {
                 P[i][j] = j;
             }
         }
-        for (int k = 0; k < numberOfNodes; k++) {
-            for (int i = 0; i < numberOfNodes; i++) {
-                for (int j = 0; j < numberOfNodes; j++) {
+
+        for (int k = 0; k < Nodes.size(); k++) {
+            for (int i = 0; i < Nodes.size(); i++) {
+                for (int j = 0; j < Nodes.size(); j++) {
 //                    int temp = (Distance[i][k] == -1 || Distance[k][j] == -1) ? Integer.MAX_VALUE : (Distance[i][k] + Distance[k][j]);
                     if (Distance[i][j] > (Distance[i][k] + Distance[k][j])) {
                         Distance[i][j] = Distance[i][k] + Distance[k][j];
-                        P[i][j] = k;
+                        P[i][j] = P[i][k];
                     }
                 }
             }
         }
 
+        // 打印矩阵MAP
+        for (int i = 0; i < Nodes.size(); i++) {
+            Log.d("x1aolata", "MAP: " + Arrays.toString(MAP[i]));
+        }
+        // 打印矩阵P
+        for (int i = 0; i < Nodes.size(); i++) {
+            Log.d("x1aolata", "P: " + Arrays.toString(P[i]));
+        }
+
     }
+
 
     /**
      * Floyd算法求解最短路径
@@ -121,60 +179,115 @@ public class Graph {
      * @param destination
      * @return Minimum distance between startingPosition and destination
      */
-    public int Floyd(int startingPosition, int destination) {
+    public double Floyd(int startingPosition, int destination) {
+        init();
         return Distance[startingPosition][destination];
     }
 
-    public int Floyd(String startingPosition, String destination) {
+    public double Floyd(String startingPosition, String destination) {
         int startingPositionIndex = 0;
         int destinationIndex = 0;
-
-        for (int i = 0; i < numberOfNodes; i++) {
-            if (Place[i].equals(startingPosition))
+        for (int i = 0; i < Nodes.size(); i++) {
+            if (Nodes.get(i).getName().equals(startingPosition))
                 startingPositionIndex = i;
-            if (Place[i].equals(destination))
+            if (Nodes.get(i).getName().equals(destination))
                 destinationIndex = i;
         }
-        Log.d("x1aolata", "Floyd: " + destinationIndex + " " + startingPositionIndex);
+        // Log.d("x1aolata", "Floyd: " + destinationIndex + " " + startingPositionIndex);
         return Floyd(startingPositionIndex, destinationIndex);
     }
 
-    public int[] Route(int startingPosition, int destination) {
-        int[] route = new int[MAX];
-        Arrays.fill(route,-1);
-        int len = 0;
-        int k;
-        route[len++] = destination;
-        if (P[startingPosition][destination] == destination) {
-            route[len++] = startingPosition;
-        } else {
-            k = destination;
-            while (P[startingPosition][k] != k) {
-                k = P[startingPosition][k];
-                route[len++] = k;
-            }
-            route[len++] = startingPosition;
-        }
 
+    /**
+     * 最短路径
+     *
+     * @param startingPosition
+     * @param destination
+     * @return
+     */
+    public List<Integer> getPath(int startingPosition, int destination) {
+        init();
+        List<Integer> route = new ArrayList<Integer>();
+        int i, j;
+        i = startingPosition;
+        j = destination;
+        route.add(startingPosition);
+        while (i != destination) {
+            route.add(P[i][j]);
+            i = P[i][j];
+        }
         return route;
     }
 
-    public int[] Route(String startingPosition, String destination) {
-
+    public List<Integer> getPath(String startingPosition, String destination) {
         int startingPositionIndex = 0;
         int destinationIndex = 0;
-
-        for (int i = 0; i < numberOfNodes; i++) {
-            if (Place[i].equals(startingPosition))
+        for (int i = 0; i < Nodes.size(); i++) {
+            if (Nodes.get(i).getName().equals(startingPosition))
                 startingPositionIndex = i;
-            if (Place[i].equals(destination))
+            if (Nodes.get(i).getName().equals(destination))
                 destinationIndex = i;
         }
-        return Route(startingPositionIndex, destinationIndex);
+        return getPath(startingPositionIndex, destinationIndex);
     }
 
 
     public String[] getPlace() {
-        return Place;
+        String[] place = new String[Nodes.size()];
+        for (int i = 0; i < Nodes.size(); i++) {
+            place[i] = Nodes.get(i).getName();
+        }
+        return place;
+    }
+
+    public List<Node> getNodes() {
+        return Nodes;
+    }
+
+    public String getAbout(String name) {
+        for (Node node : Nodes
+        ) {
+            if (node.getName().equals(name))
+                return node.getAbout();
+
+        }
+        return "啥也没有";
+    }
+
+    public Node getNode(String name) {
+        for (Node node : Nodes
+        ) {
+            if (node.getName().equals(name))
+                return node;
+
+        }
+        return null;
+    }
+
+
+    public int getIndex(String name) {
+        for (int i = 0; i < Nodes.size(); i++) {
+            if (Nodes.get(i).getName().equals(name))
+                return i;
+        }
+        return -1;
+    }
+
+    // 删除地点
+    public void DeleteNode(String name) {
+        int index = getIndex(name);
+
+        // 删除行
+        for (int i = index; i < MAX - 1; i++) {
+            for (int j = 0; j < MAX; j++) {
+                MAP[i][j] = MAP[i + 1][j];
+            }
+        }
+        for (int i = index; i < MAX - 1; i++) {
+            for (int j = 0; j < MAX; j++) {
+                MAP[j][i] = MAP[j][i + 1];
+            }
+        }
+        Nodes.remove(index);
     }
 }
