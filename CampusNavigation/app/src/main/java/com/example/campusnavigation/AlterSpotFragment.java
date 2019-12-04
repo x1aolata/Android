@@ -52,6 +52,13 @@ public class AlterSpotFragment extends Fragment {
         data = new LinkedList<>(Arrays.asList(Graph.getInstance().getPlace()));
         alter_spot.attachDataSource(data);
 
+        edittext_alterfrag_name.setText(graph.Nodes.get(graph.getIndex(alter_spot.getText().toString())).getName());
+        edittext_alterfrag_number.setText(graph.Nodes.get(graph.getIndex(alter_spot.getText().toString())).getNumber());
+        edittext_alterfrag_about.setText(graph.Nodes.get(graph.getIndex(alter_spot.getText().toString())).getAbout());
+        edittext_alterfrag_longitude.setText("" + graph.Nodes.get(graph.getIndex(alter_spot.getText().toString())).getLongitude());
+        edittext_alterfrag_latitude.setText("" + graph.Nodes.get(graph.getIndex(alter_spot.getText().toString())).getLatitude());
+
+
         alter_spot.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -82,6 +89,7 @@ public class AlterSpotFragment extends Fragment {
                 node.setAbout(edittext_alterfrag_about.getText().toString());
                 node.setLongitude(Double.valueOf(edittext_alterfrag_longitude.getText().toString()));
                 node.setLatitude(Double.valueOf(edittext_alterfrag_latitude.getText().toString()));
+                Toast.makeText(getActivity(), "信息修改成功", Toast.LENGTH_SHORT).show();
 
             }
         });

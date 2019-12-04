@@ -30,7 +30,13 @@ public class DetailedInfo extends AppCompatActivity {
         setTitle(s);
 
         TextView text_introduction = findViewById(R.id.text_introduction);
-        text_introduction.setText(Graph.getInstance().getAbout(s));
+        if (s.equals("图书馆")) {
+            text_introduction.setText(R.string.library_text);
+        } else if (s.equals("网计学院")) {
+            text_introduction.setText(R.string.cs_text);
+        } else {
+            text_introduction.setText(Graph.getInstance().getAbout(s));
+        }
 
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);

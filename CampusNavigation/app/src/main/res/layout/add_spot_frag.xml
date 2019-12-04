@@ -2,173 +2,217 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ad"
+    android:background="@drawable/background9"
+    android:gravity="center_vertical"
     android:orientation="vertical">
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/RED" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="增加地点信息"
-        android:textSize="30dp" />
-
-    <TableLayout
-        android:id="@+id/TableLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:stretchColumns="1,3">
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="名称:"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/edittext_addfrag_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="馨宁楼"
-                android:inputType="text"
-                android:textSize="20dp" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="编号:"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/edittext_addfrag_number"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="12"
-                android:inputType="number"
-                android:textSize="20dp" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="地点介绍:"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/edittext_addfrag_about"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="这里风景真美"
-                android:inputType="textMultiLine"
-                android:textSize="20dp" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="经度:"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/edittext_addfrag_longitude"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="115.580702"
-                android:inputType="numberDecimal"
-                android:textSize="20dp" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="纬度:"
-                android:textSize="20dp" />
-
-            <EditText
-                android:id="@+id/edittext_addfrag_latitude"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="38.889632"
-                android:inputType="numberDecimal"
-                android:textSize="20dp" />
-
-        </TableRow>
-    </TableLayout>
-
-    <Button
-        android:id="@+id/button_add_submit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="增加" />
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="增加路径信息"
-        android:textSize="30dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_margin="15dp"
+        android:background="@color/background"
+        android:orientation="vertical">
 
-        <org.angmarch.views.NiceSpinner
-            android:id="@+id/start_addRoute"
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="2"
-            android:textSize="15dp" />
+            android:gravity="center"
+            android:text="增加地点信息"
+            android:textColor="@color/textColor"
+            android:textSize="30sp" />
 
-
-        <org.angmarch.views.NiceSpinner
-            android:id="@+id/end_addRoute"
+        <TableLayout
+            android:id="@+id/TableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_weight="2"
-            android:textSize="15dp" />
+            android:stretchColumns="1,3">
 
+            <TableRow>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="名称:"
+                    android:textColor="@color/textColor"
+                    android:textSize="22sp"
+                    />
+
+                <EditText
+                    android:id="@+id/edittext_addfrag_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="馨宁宿舍楼"
+                    android:inputType="text"
+                    android:textColorHint="@color/textColorHint"
+                    android:textColor="@color/textColor"
+                    android:textSize="20sp" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="编号:"
+                    android:textColor="@color/textColor"
+                    android:textSize="22sp"  />
+
+                <EditText
+                    android:id="@+id/edittext_addfrag_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="12"
+                    android:inputType="number"
+                    android:textColorHint="@color/textColorHint"
+                    android:textColor="@color/textColor"
+                    android:textSize="20sp" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="地点介绍:"
+                    android:textColor="@color/textColor"
+                    android:textSize="22sp"  />
+
+                <EditText
+                    android:id="@+id/edittext_addfrag_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="馨宁宿舍楼，贼棒！"
+                    android:inputType="textMultiLine"
+                    android:maxLines="3"
+                    android:textColorHint="@color/textColorHint"
+                    android:textColor="@color/textColor"
+                    android:textSize="20sp" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="经度:"
+                    android:textColor="@color/textColor"
+                    android:textSize="22sp" />
+
+                <EditText
+                    android:id="@+id/edittext_addfrag_longitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="115.580702"
+                    android:inputType="numberDecimal"
+                    android:textColorHint="@color/textColorHint"
+                    android:textColor="@color/textColor"
+                    android:textSize="20sp" />
+
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="纬度:"
+                    android:textColor="@color/textColor"
+                    android:textSize="22sp"  />
+
+                <EditText
+                    android:id="@+id/edittext_addfrag_latitude"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="38.889632"
+                    android:inputType="numberDecimal"
+                    android:textColorHint="@color/textColorHint"
+                    android:textColor="@color/textColor"
+                    android:textSize="20sp" />
+
+            </TableRow>
+        </TableLayout>
+
+        <Button
+            android:id="@+id/button_add_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:text="增加" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:background="@color/background"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="增加路径信息"
+            android:textColor="@color/textColor"
+            android:textSize="30sp"  />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <org.angmarch.views.NiceSpinner
+                android:id="@+id/start_addRoute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_weight="2"
+                android:backgroundTint="@color/Spinder"
+                android:textSize="15dp" />
+
+
+            <org.angmarch.views.NiceSpinner
+                android:id="@+id/end_addRoute"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:backgroundTint="@color/Spinder"
+                android:layout_weight="2"
+                android:textSize="15dp" />
+
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/edittext_adddistance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="在此输入距离"
+            android:inputType="number"
+            android:textColorHint="@color/textColorHint"
+            android:textColor="@color/textColor"
+            android:textSize="20sp"/>
+
+        <Button
+            android:id="@+id/button_addRoute"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="增加路径" />
 
 
     </LinearLayout>
-    <EditText
-        android:id="@+id/edittext_adddistance"
-        android:hint="距离"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"/>
-    <Button
-        android:id="@+id/button_addRoute"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="增加路径" />
 
 
 </LinearLayout>

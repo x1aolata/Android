@@ -201,7 +201,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onBoomButtonClick(int index) {
                         Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(Uri.parse("https://github.com/x1aolata"));//项目源码
+                        intent.setData(Uri.parse("https://github.com/x1aolata/Android/tree/master/CampusNavigation"));//项目源码
                         startActivity(intent);
                     }
                 })
@@ -299,7 +299,7 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("x1aolata", "onClick: " + Places[route.get(i)].getName());
                         points.add(new LatLng(Places[route.get(i)].getLatitude(), Places[route.get(i)].getLongitude()));
                     }
-                    renderingPath(points);
+
 
 //                    List<LatLng> points = new ArrayList<LatLng>();
 //                    int[] route = graph.Route(niceSpinnerstart.getText().toString(), niceSpinnerend.getText().toString());
@@ -319,7 +319,7 @@ public class MainActivity extends AppCompatActivity {
                     double distance = graph.Floyd(niceSpinnerstart.getText().toString(), niceSpinnerend.getText().toString());
                     if (distance < 99999999) {
                         Snackbar.make(view, "从" + niceSpinnerstart.getText() + "到" + niceSpinnerend.getText() + "的距离为：" + distance + "米。", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-
+                        renderingPath(points);
                     } else {
                         Snackbar.make(view, "从" + niceSpinnerstart.getText() + "到" + niceSpinnerend.getText() + "无路可走啊。", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
 

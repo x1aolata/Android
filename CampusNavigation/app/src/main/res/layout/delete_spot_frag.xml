@@ -2,25 +2,53 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/DeleteSpotFragment"
+    android:background="@drawable/background13"
+    android:gravity="center_vertical"
     android:orientation="vertical">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@color/RED" />
-
-    <org.angmarch.views.NiceSpinner
-        android:id="@+id/delete_spot"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:textSize="15dp" />
+        android:layout_margin="15dp"
+        android:background="@color/background"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/button_delete"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="确认删除" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="删除地点"
+            android:textColor="@color/textColor"
+            android:textSize="30sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="待删除景点:"
+                android:textColor="@color/textColor"
+                android:textSize="22sp" />
+
+            <org.angmarch.views.NiceSpinner
+                android:id="@+id/delete_spot"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:backgroundTint="@color/Spinder"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="确认删除" />
+
+    </LinearLayout>
 </LinearLayout>

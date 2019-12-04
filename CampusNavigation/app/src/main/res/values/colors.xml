@@ -12,4 +12,13 @@
     <color name="Line">#4F0277</color>
     <color name="RED">#FF0000</color>
     <color name="Test">#3F51B5</color>
+
+
+    <color name="textColor">#FFFFFF</color>
+    <color name="textColorHint">#858383</color>
+
+
+    <color name="Spinder">#D6D8D7</color>
+
+    <color name="background">#99000000</color>
 </resources>

@@ -53,7 +53,7 @@ public class DeleteSpotFragment extends Fragment {
                 }else
                 {
                     graph.DeleteNode(delete_spot.getText().toString());
-                    Toast.makeText(getActivity(),delete_spot.getText().toString()+"已删除", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"\""+delete_spot.getText().toString()+"\""+"已删除", Toast.LENGTH_SHORT).show();
                     data = new LinkedList<>(Arrays.asList(Graph.getInstance().getPlace()));
                     delete_spot.attachDataSource(data);
                 }
