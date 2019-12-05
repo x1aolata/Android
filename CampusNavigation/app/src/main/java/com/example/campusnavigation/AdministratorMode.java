@@ -22,14 +22,6 @@ public class AdministratorMode extends AppCompatActivity {
     List<Fragment> fragments = new ArrayList<Fragment>();
 
 
-    // Add
-//    Button button_add_submit;
-//    EditText edittext_addfrag_name;
-//    EditText edittext_addfrag_number;
-//    EditText edittext_addfrag_about;
-//    EditText edittext_addfrag_longitude;
-//    EditText edittext_addfrag_latitude;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,22 +53,6 @@ public class AdministratorMode extends AppCompatActivity {
         };
         coolMenuFrameLayout.setAdapter(adapter);
 
-
-//        button_add_submit = findViewById(R.id.button_add_submit);
-//        edittext_addfrag_name = findViewById(R.id.edittext_addfrag_name);
-//        edittext_addfrag_number = findViewById(R.id.edittext_addfrag_number);
-//        edittext_addfrag_about = findViewById(R.id.edittext_addfrag_about);
-//        edittext_addfrag_longitude = findViewById(R.id.edittext_addfrag_longitude);
-//        edittext_addfrag_latitude = findViewById(R.id.edittext_addfrag_latitude);
-//        button_add_submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Node node = new Node(edittext_addfrag_name.getText().toString(), edittext_addfrag_number.getText().toString(),
-//                        Double.valueOf(edittext_addfrag_longitude.getText().toString()), Double.valueOf(edittext_addfrag_latitude.getText().toString()),
-//                        edittext_addfrag_about.getText().toString());
-//                Graph.getInstance().Nodes.add(node);
-//            }
-//        });
 
     }
 }

@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/text_margin"
-        android:textSize="16sp"
-        android:text="@string/library_text" />
+        android:text="@string/library_text"
+        android:textSize="16sp" />
 
 </androidx.core.widget.NestedScrollView>

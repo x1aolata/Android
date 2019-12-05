@@ -35,32 +35,26 @@ public class DeleteSpotFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-
         delete_spot = getActivity().findViewById(R.id.delete_spot);
-
         data = new LinkedList<>(Arrays.asList(Graph.getInstance().getPlace()));
         delete_spot.attachDataSource(data);
 
         button_delete = getActivity().findViewById(R.id.button_delete);
-
         button_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(graph.Nodes.size()<3)
-                {
-                    Toast.makeText(getActivity(),"别删了，再删就没了啊，哥哥！", Toast.LENGTH_SHORT).show();
-
-                }else
-                {
+                if (graph.Nodes.size() < 3) {
+                    Toast.makeText(getActivity(), "别删了，再删就没了啊，哥哥！", Toast.LENGTH_SHORT).show();
+                } else {
                     graph.DeleteNode(delete_spot.getText().toString());
-                    Toast.makeText(getActivity(),"\""+delete_spot.getText().toString()+"\""+"已删除", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "\"" + delete_spot.getText().toString() + "\"" + "已删除", Toast.LENGTH_SHORT).show();
                     data = new LinkedList<>(Arrays.asList(Graph.getInstance().getPlace()));
                     delete_spot.attachDataSource(data);
                 }
-
             }
         });
 
-
     }
+
+
 }

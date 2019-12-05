@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">CampusNavigation</string>
+    <string name="app_name">校园导航</string>
     <string name="title_activity_detailed_info">DetailedInfo</string>
+    <string name="main_title">小邋遢的校园导航</string>
     <string name="library_text">
        河北大学图书馆\n\n
 
@@ -28,9 +29,14 @@
         学院将秉承河北大学深厚的学术底蕴和人文传统，依托河北大学多学科综合性大学的学科优势，以“立足系统、面向应用”为人才培养理念，致力于将学院建设成为学科特色鲜明、在国内具有一定影响力的计算机学院。\n\n
     </string>
     <string name="About">
-        \n\n\n
-        这是小邋遢制做的校园导航APP，时间紧促，还有许多Bug未进行修复，个人审美有限，界面较丑，请谅解。
-        \n\n\n\n\n
+        \n\n
+        这是小邋遢制做的校园导航APP，时间紧促，还有许多Bug未进行修复，个人审美有限，界面较丑，敬请谅解。\n
+        目前未做到适配所有机型，个别机型可能会遇到字体偏大偏小的问题（理想效果可以参考报告中的展示图)，敬请谅解。\n\n
+
+        主页面的地图支持一般地图的基本操作，可以放大缩小，双指调整俯仰角等。\n
+        点击三次管理员模式进入管理员界面。\n
+        增加地点时所需要的经纬度信息可通过“坐标拾取系统”（http://api.map.baidu.com/lbsapi/getpoint/index.html）进行查看。\n
+        \n\n
         默认图基于以下图片构建，界面所展示信息完全基于图信息，与实际距离无关。
     </string>
     <string name="action_settings">Settings</string>

@@ -60,16 +60,16 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     Node[] Places; //储存地点
-    public LocationClient mLocationClient;
-    public TextView positionText;
-    private MapView mapView;
-    private BaiduMap baiduMap;
+    public LocationClient mLocationClient; //定位服务
+    public TextView positionText; //定位状态信息
+    private MapView mapView; //地图
+    private BaiduMap baiduMap; //地图
     private boolean isFirstLocate = true;
     public Graph graph;
     BaiduMap.OnMarkerClickListener onMarkerClickListener;
     TextInsideCircleButton.Builder builder;
     boolean isSatelliteMap = false;
-    int administrators = 4;
+    int administrators = 1;
     LinkedList<String> data;//下拉菜单
     NiceSpinner niceSpinnerstart, niceSpinnerend;
 
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
         mapView = (MapView) findViewById(R.id.bmapView);
         baiduMap = mapView.getMap();
         baiduMap.setMyLocationEnabled(true);
-        setTitle("小邋遢的校园导航");
+        setTitle(R.string.main_title);
         positionText = (TextView) findViewById(R.id.position_text_view);
         graph = Graph.getInstance();
 
@@ -97,12 +97,9 @@ public class MainActivity extends AppCompatActivity {
 //                public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
 //                    if (b) {
 //                        baiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
-//
-//
 //                    } else {
 //                        baiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
 //                    }
-//
 //                }
 //            });
 //        }
@@ -138,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onBoomButtonClick(int index) {
                         if (administrators < 3) {
-                            Toast.makeText(MainActivity.this, "听说你想进管理员模式？？(ˇ╮ˇ)不理你", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(MainActivity.this, "听说你想进管理员模式？？(ˇ╮ˇ)", Toast.LENGTH_SHORT).show();
                             administrators++;
                         } else {
                             Intent intent = new Intent(MainActivity.this, AdministratorMode.class);
@@ -174,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
                         baiduMap.removeMarkerClickListener(onMarkerClickListener);
                         baiduMap.clear();
                         init();
-
                         for (int i = 0; i < graph.Nodes.size(); i++) {
                             for (int j = i; j < graph.Nodes.size(); j++) {
                                 if (graph.MAP[i][j] < 9000) {
@@ -192,7 +188,6 @@ public class MainActivity extends AppCompatActivity {
                 .pieceColor(Color.parseColor("#FF5D615D"));
         bmb.addBuilder(builder);
 
-
         // 项目源码
         builder = new TextInsideCircleButton.Builder()
                 .normalImageRes(R.drawable.code)
@@ -209,10 +204,7 @@ public class MainActivity extends AppCompatActivity {
         bmb.addBuilder(builder);
 
 
-//
-
-
-        // 权限申请
+        // 所需要的权限申请
         {
             List<String> permissionList = new ArrayList<>();
             if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
@@ -232,6 +224,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+
         // 初始化并加入Markers
         init();
         addMarkers(Places);
@@ -240,43 +233,33 @@ public class MainActivity extends AppCompatActivity {
         //交通路况图
         //  baiduMap.setTrafficEnabled(true);
         //热力图
-        //   baiduMap.setBaiduHeatMapEnabled(true);
+        //  baiduMap.setBaiduHeatMapEnabled(true);
 
 
         // 下拉菜单
-
-
         niceSpinnerstart = (NiceSpinner) findViewById(R.id.start_NiceSpinner);
         niceSpinnerstart.setTextColor(Color.BLACK);
-//        data = new LinkedList<>(Arrays.asList("体检中心", "操场", "校门北口", "银杏景观", "邯郸音乐厅", "图书馆", "餐厅", "信息学部", "花园景观", "校门东口", "网计学院", "校门南口"));
         niceSpinnerstart.attachDataSource(data);
         niceSpinnerend = (NiceSpinner) findViewById(R.id.end_NiceSpinner);
         niceSpinnerend.setTextColor(Color.BLACK);
-//        data = new LinkedList<>(Arrays.asList("体检中心", "操场", "校门北口", "银杏景观", "邯郸音乐厅", "图书馆", "餐厅", "信息学部", "花园景观", "校门东口", "网计学院", "校门南口"));
-//        data = new LinkedList<>(Arrays.asList(graph.getPlace()));
         niceSpinnerend.attachDataSource(data);
+
 
         // 求最短路径
         Button search_shortestPath = findViewById(R.id.search_shortestPath);
         search_shortestPath.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (niceSpinnerstart.getText().toString().equals(niceSpinnerend.getText().toString())) {
                     Snackbar.make(view, "原地绕圈圈有意思吗...", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
                 } else {
                     double distance = graph.Floyd(niceSpinnerstart.getText().toString(), niceSpinnerend.getText().toString());
                     if (distance < 99999999) {
                         Snackbar.make(view, "从" + niceSpinnerstart.getText() + "到" + niceSpinnerend.getText() + "的距离为：" + distance + "米。", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-
                     } else {
                         Snackbar.make(view, "从" + niceSpinnerstart.getText() + "到" + niceSpinnerend.getText() + "无路可走啊。", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-
                     }
-
-//                    Toast.makeText(MainActivity.this, "从" + niceSpinnerstart.getText() + "到" + niceSpinnerend.getText() + "的距离为：" + distance + "米。", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
@@ -299,7 +282,6 @@ public class MainActivity extends AppCompatActivity {
                         Log.d("x1aolata", "onClick: " + Places[route.get(i)].getName());
                         points.add(new LatLng(Places[route.get(i)].getLatitude(), Places[route.get(i)].getLongitude()));
                     }
-
 
 //                    List<LatLng> points = new ArrayList<LatLng>();
 //                    int[] route = graph.Route(niceSpinnerstart.getText().toString(), niceSpinnerend.getText().toString());
@@ -324,7 +306,6 @@ public class MainActivity extends AppCompatActivity {
                         Snackbar.make(view, "从" + niceSpinnerstart.getText() + "到" + niceSpinnerend.getText() + "无路可走啊。", Snackbar.LENGTH_SHORT).setAction("Action", null).show();
 
                     }
-//                    Snackbar.make(view, s, Snackbar.LENGTH_SHORT).setAction("Action", null).show();
                 }
                 baiduMap.removeMarkerClickListener(onMarkerClickListener);
                 addMarkers(Places);
@@ -332,7 +313,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        // 清除
+
+        // 清除所画信息
         Button clean_shortestPath = findViewById(R.id.clean_shortestPath);
         clean_shortestPath.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -340,29 +322,26 @@ public class MainActivity extends AppCompatActivity {
                 baiduMap.clear();
                 baiduMap.removeMarkerClickListener(onMarkerClickListener);
                 addMarkers(Places);
-
-
             }
         });
 
     }
 
     public void init() {
-
-//        String[] name = {"体检中心", "操场", "校门北口", "银杏景观", "邯郸音乐厅", "图书馆", "餐厅", "信息学部", "花园景观", "校门东口", "网计学院", "校门南口"};
-//        double[] longitude = {115.568463, 115.572838, 115.575169, 115.577738, 115.56897, 115.572595, 115.576009, 115.571207, 115.572303, 115.574818, 115.569518, 115.571894};
-//        double[] latitude = {38.88999, 38.891099, 38.889526, 38.889031, 38.889411, 38.887894, 38.888122, 38.887059, 38.886111, 38.886585, 38.885668, 38.883077};
-//        Log.d("x1aolata", "init: " + latitude.length + "   " + longitude.length);
         data = new LinkedList<>(Arrays.asList(graph.getPlace()));
         Places = new Node[graph.Nodes.size()];
         for (int i = 0; i < graph.Nodes.size(); i++) {
             Places[i] = new Node(graph.Nodes.get(i).getName(), graph.Nodes.get(i).getNumber(), graph.Nodes.get(i).getLongitude(), graph.Nodes.get(i).getLatitude(), graph.Nodes.get(i).getAbout());
-//            Places[i].setName(name[i]);
-//            Places[i].setNumber(String.valueOf(i));
-//            Places[i].setAbout("都是一样的");
-//            Places[i].setLatitude(latitude[i]);
-//            Places[i].setLongitude(longitude[i]);
         }
+    }
+
+    public void reInit() {
+        init();
+        baiduMap.clear();
+        baiduMap.removeMarkerClickListener(onMarkerClickListener);
+        addMarkers(Places);
+        niceSpinnerstart.attachDataSource(data);
+        niceSpinnerend.attachDataSource(data);
     }
 
     /**
@@ -422,7 +401,7 @@ public class MainActivity extends AppCompatActivity {
             //默认返回false
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Toast.makeText(MainActivity.this, marker.getTitle() + "被点击了", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, marker.getTitle() , Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MainActivity.this, DetailedInfo.class);
                 intent.putExtra("lable", marker.getTitle());
                 startActivity(intent);
@@ -453,8 +432,6 @@ public class MainActivity extends AppCompatActivity {
 
         //添加纹理图片
         List<BitmapDescriptor> textureList = new ArrayList<>();
-//        BitmapDescriptor mRedTexture = BitmapDescriptorFactory.fromAsset("arrow");//箭头图片
-//        textureList.add(mRedTexture);
         textureList.add(BitmapDescriptorFactory.fromAsset("arrow"));//箭头图片
         // 设置为同一种格式
         List<Integer> textureIndexs = new ArrayList<Integer>();
@@ -487,7 +464,7 @@ public class MainActivity extends AppCompatActivity {
                     s += "   \n";
                 }
 
-                Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
+//                Toast.makeText(MainActivity.this, s, Toast.LENGTH_LONG).show();
                 return true;
             }
         };
@@ -496,6 +473,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    // 请求位置信息
     private void navigateTo(BDLocation location) {
         if (isFirstLocate) {
             // Toast.makeText(this, "nav to " + location.getAddrStr(), Toast.LENGTH_SHORT).show();
@@ -520,6 +498,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // 权限申请
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         switch (requestCode) {
@@ -543,6 +522,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // 位置监听器
     public class MyLocationListener extends BDAbstractLocationListener {
 
         @Override
@@ -592,28 +572,14 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d("x1aolata", "onResume111111111: ");
         mapView.onResume();
-        init();
-        baiduMap.clear();
-        baiduMap.removeMarkerClickListener(onMarkerClickListener);
-        addMarkers(Places);
-        niceSpinnerstart.attachDataSource(data);
-        niceSpinnerend.attachDataSource(data);
-
+        reInit();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        Log.d("x1aolata", "onStart111111111: ");
-        init();
-        baiduMap.clear();
-        baiduMap.removeMarkerClickListener(onMarkerClickListener);
-
-        addMarkers(Places);
-        niceSpinnerstart.attachDataSource(data);
-        niceSpinnerend.attachDataSource(data);
+        reInit();
     }
 
     @Override
@@ -633,15 +599,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onRestart() {
         super.onRestart();
-
-        Log.d("x1aolata", "onRestart:111111111 ");
-        init();
-        baiduMap.clear();
-        baiduMap.removeMarkerClickListener(onMarkerClickListener);
-        addMarkers(Places);
-        niceSpinnerstart.attachDataSource(data);
-        niceSpinnerend.attachDataSource(data);
-        Log.d("x1aolata", "onRestart:111111111 ");
+        reInit();
     }
 
 

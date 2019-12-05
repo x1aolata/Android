@@ -36,8 +36,7 @@
                     android:gravity="center"
                     android:text="名称:"
                     android:textColor="@color/textColor"
-                    android:textSize="22sp"
-                    />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/edittext_addfrag_name"
@@ -45,8 +44,8 @@
                     android:layout_height="wrap_content"
                     android:hint="馨宁宿舍楼"
                     android:inputType="text"
-                    android:textColorHint="@color/textColorHint"
                     android:textColor="@color/textColor"
+                    android:textColorHint="@color/textColorHint"
                     android:textSize="20sp" />
 
             </TableRow>
@@ -59,7 +58,7 @@
                     android:gravity="center"
                     android:text="编号:"
                     android:textColor="@color/textColor"
-                    android:textSize="22sp"  />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/edittext_addfrag_number"
@@ -67,8 +66,8 @@
                     android:layout_height="wrap_content"
                     android:hint="12"
                     android:inputType="number"
-                    android:textColorHint="@color/textColorHint"
                     android:textColor="@color/textColor"
+                    android:textColorHint="@color/textColorHint"
                     android:textSize="20sp" />
 
             </TableRow>
@@ -81,7 +80,7 @@
                     android:gravity="center"
                     android:text="地点介绍:"
                     android:textColor="@color/textColor"
-                    android:textSize="22sp"  />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/edittext_addfrag_about"
@@ -90,8 +89,8 @@
                     android:hint="馨宁宿舍楼，贼棒！"
                     android:inputType="textMultiLine"
                     android:maxLines="3"
-                    android:textColorHint="@color/textColorHint"
                     android:textColor="@color/textColor"
+                    android:textColorHint="@color/textColorHint"
                     android:textSize="20sp" />
 
             </TableRow>
@@ -112,8 +111,8 @@
                     android:layout_height="wrap_content"
                     android:hint="115.580702"
                     android:inputType="numberDecimal"
-                    android:textColorHint="@color/textColorHint"
                     android:textColor="@color/textColor"
+                    android:textColorHint="@color/textColorHint"
                     android:textSize="20sp" />
 
             </TableRow>
@@ -126,7 +125,7 @@
                     android:gravity="center"
                     android:text="纬度:"
                     android:textColor="@color/textColor"
-                    android:textSize="22sp"  />
+                    android:textSize="22sp" />
 
                 <EditText
                     android:id="@+id/edittext_addfrag_latitude"
@@ -134,8 +133,8 @@
                     android:layout_height="wrap_content"
                     android:hint="38.889632"
                     android:inputType="numberDecimal"
-                    android:textColorHint="@color/textColorHint"
                     android:textColor="@color/textColor"
+                    android:textColorHint="@color/textColorHint"
                     android:textSize="20sp" />
 
             </TableRow>
@@ -166,7 +165,7 @@
             android:gravity="center"
             android:text="增加路径信息"
             android:textColor="@color/textColor"
-            android:textSize="30sp"  />
+            android:textSize="30sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -188,8 +187,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                android:backgroundTint="@color/Spinder"
                 android:layout_weight="2"
+                android:backgroundTint="@color/Spinder"
                 android:textSize="15dp" />
 
 
@@ -201,9 +200,9 @@
             android:layout_height="wrap_content"
             android:hint="在此输入距离"
             android:inputType="number"
-            android:textColorHint="@color/textColorHint"
             android:textColor="@color/textColor"
-            android:textSize="20sp"/>
+            android:textColorHint="@color/textColorHint"
+            android:textSize="20sp" />
 
         <Button
             android:id="@+id/button_addRoute"

@@ -1,13 +1,11 @@
 package com.example.campusnavigation;
 
 public class Node {
-    private String name;
-    private String number;
-    private String about;
-    // 经度
-    private double longitude;
-    // 纬度
-    private double latitude;
+    private String name;     // 名称
+    private String number;   // 编号
+    private String about;    // 简介
+    private double longitude;// 经度
+    private double latitude; // 纬度
 
     public Node(String name, String number, String about) {
         this.name = name;
@@ -69,4 +67,6 @@ public class Node {
     public void setAbout(String about) {
         this.about = about;
     }
+
+
 }

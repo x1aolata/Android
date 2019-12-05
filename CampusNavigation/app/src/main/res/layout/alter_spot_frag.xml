@@ -9,10 +9,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/background"
         android:layout_margin="15dp"
+        android:background="@color/background"
         android:orientation="vertical">
-
 
 
         <TextView
@@ -52,8 +51,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text"
-                    android:textColorHint="@color/textColorHint"
                     android:textColor="@color/textColor"
+                    android:textColorHint="@color/textColorHint"
                     android:textSize="20sp" />
 
             </TableRow>
@@ -73,8 +72,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="number"
-                    android:textColorHint="@color/textColorHint"
                     android:textColor="@color/textColor"
+                    android:textColorHint="@color/textColorHint"
                     android:textSize="20sp" />
 
             </TableRow>
@@ -93,10 +92,10 @@
                     android:id="@+id/edittext_alterfrag_about"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:maxLines="3"
                     android:inputType="textMultiLine"
-                    android:textColorHint="@color/textColorHint"
+                    android:maxLines="3"
                     android:textColor="@color/textColor"
+                    android:textColorHint="@color/textColorHint"
                     android:textSize="20sp" />
 
             </TableRow>
@@ -116,8 +115,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:textColorHint="@color/textColorHint"
                     android:textColor="@color/textColor"
+                    android:textColorHint="@color/textColorHint"
                     android:textSize="20sp" />
 
             </TableRow>
@@ -137,8 +136,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="numberDecimal"
-                    android:textColorHint="@color/textColorHint"
                     android:textColor="@color/textColor"
+                    android:textColorHint="@color/textColorHint"
                     android:textSize="20sp" />
 
             </TableRow>

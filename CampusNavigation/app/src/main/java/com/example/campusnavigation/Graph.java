@@ -3,7 +3,7 @@ package com.example.campusnavigation;
 
 import android.util.Log;
 
-import java.lang.reflect.Array;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Graph {
 
-    // 单例类,以防出现二义性
+    // 单例类,防止二义性问题出现
     private static Graph graph;
 
     private Graph() {
@@ -55,7 +55,6 @@ public class Graph {
 
     {
         // 初始化邻接矩阵
-
         for (int i = 0; i < MAX; i++) {
             for (int j = 0; j < MAX; j++) {
                 if (i == j) MAP[i][j] = 0;
@@ -63,9 +62,9 @@ public class Graph {
                     MAP[i][j] = Double.POSITIVE_INFINITY;
             }
         }
+
         // 边赋值
         {
-
             MAP[0][1] = 350;
             MAP[0][4] = 200;
 
@@ -118,26 +117,23 @@ public class Graph {
             MAP[11][10] = 400;
             MAP[11][9] = 600;
         }
-
         init();
     }
 
 
     /**
-     * 邻接矩阵的初始化
+     * 弗洛伊德算法初始化
      */
     public void init() {
 
-
-// 深拷贝
         // 打印矩阵MAP
         for (int i = 0; i < Nodes.size(); i++) {
             Log.d("x1aolata", "MAP: " + Arrays.toString(MAP[i]));
         }
+        // 深拷贝
         for (int i = 0; i < MAX; i++) {
             Distance[i] = MAP[i].clone();
         }
-//        Distance = MAP;
         P = new int[Nodes.size()][Nodes.size()];
 
 
@@ -160,15 +156,11 @@ public class Graph {
             }
         }
 
+
         // 打印矩阵MAP
         for (int i = 0; i < Nodes.size(); i++) {
             Log.d("x1aolata", "MAP: " + Arrays.toString(MAP[i]));
         }
-        // 打印矩阵P
-        for (int i = 0; i < Nodes.size(); i++) {
-            Log.d("x1aolata", "P: " + Arrays.toString(P[i]));
-        }
-
     }
 
 
@@ -251,7 +243,7 @@ public class Graph {
                 return node.getAbout();
 
         }
-        return "啥也没有";
+        return "";
     }
 
     public Node getNode(String name) {
@@ -259,7 +251,6 @@ public class Graph {
         ) {
             if (node.getName().equals(name))
                 return node;
-
         }
         return null;
     }

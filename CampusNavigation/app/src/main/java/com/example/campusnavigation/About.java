@@ -14,7 +14,7 @@ public class About extends AppCompatActivity {
         setContentView(R.layout.activity_about);
         this.setTitle("关于");
 
-        TextView textView = findViewById(R.id.about_text);
+//        TextView textView = findViewById(R.id.about_text);
 //        textView.setText("\n\n  这是小邋遢制作的校园导航");
 
     }

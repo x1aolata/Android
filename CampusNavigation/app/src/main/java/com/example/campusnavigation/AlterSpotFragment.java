@@ -62,8 +62,8 @@ public class AlterSpotFragment extends Fragment {
         alter_spot.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-//                Toast.makeText(getActivity(), data.get(i), Toast.LENGTH_SHORT).show();
 
+                //  Toast.makeText(getActivity(), data.get(i), Toast.LENGTH_SHORT).show();
                 edittext_alterfrag_name.setText(graph.Nodes.get(graph.getIndex(data.get(i))).getName());
                 edittext_alterfrag_number.setText(graph.Nodes.get(graph.getIndex(data.get(i))).getNumber());
                 edittext_alterfrag_about.setText(graph.Nodes.get(graph.getIndex(data.get(i))).getAbout());

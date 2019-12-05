@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.snackbar.Snackbar;
 
 import org.angmarch.views.NiceSpinner;
 
@@ -91,29 +90,21 @@ public class AddSpotFragment extends Fragment {
         start_addRoute.attachDataSource(data);
         end_addRoute.attachDataSource(data);
 
-
         Button button = getActivity().findViewById(R.id.button_addRoute);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if(edittext_adddistance.getText().toString().equals(""))
-                {
+                if (edittext_adddistance.getText().toString().equals("")) {
                     Toast.makeText(getActivity(), "不输入距离是添加不了的哦！", Toast.LENGTH_SHORT).show();
-                }else
-                {
+                } else {
                     int distance = Integer.valueOf(edittext_adddistance.getText().toString());
-
                     Graph.getInstance().MAP[Graph.getInstance().getIndex(end_addRoute.getText().toString())][Graph.getInstance().getIndex(start_addRoute.getText().toString())] = distance;
-
                     Graph.getInstance().MAP[Graph.getInstance().getIndex(start_addRoute.getText().toString())][Graph.getInstance().getIndex(end_addRoute.getText().toString())] = distance;
                     Toast.makeText(getActivity(), "添加路径成功", Toast.LENGTH_SHORT).show();
-
                 }
-
             }
         });
-
     }
 
 
